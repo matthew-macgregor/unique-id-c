@@ -10,6 +10,8 @@ Compile with MSVC on Windows:
 cl main.c /std:c11 /Fo:random-id.obj /link /OUT:random-id.exe
 ```
 
+For Linux/MacOS:
+
 ```
-gcc main.c -std=c11 -o random-id
+gcc main.c -O3 -std=c11 -o random-id
 ```
