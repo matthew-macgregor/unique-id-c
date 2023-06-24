@@ -26,7 +26,7 @@ void gen_random(const int len, char* buffer) {
     for (int i = 0; i < len; ++i) {
         buffer[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
     }
-    buffer[len-1] = 0; // null term
+    buffer[len] = 0; // null term
 }
 
 int main(int argc, char *argv[]) {
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     for (option_idx = 1; option_idx < argc && argv[option_idx][0] == '-'; option_idx++) {
         switch (argv[option_idx][1]) {
             case 'l':
-                len = atoi(argv[++option_idx]) + 1;
+                len = atoi(argv[++option_idx]);
                 if (len <= 0) {
                     printf("%d is an invalid length\n", len);
                     exit(EXIT_FAILURE);
