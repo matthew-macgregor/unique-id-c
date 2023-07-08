@@ -46,22 +46,23 @@ int main(int argc, char *argv[]) {
     for (option_idx = 1; option_idx < argc; option_idx++) {
         switch (argv[option_idx][1]) {
             case 'l':
-		if (option_idx + 1 >= argc) {
-		    printf("Missing integer argument for option -l\n");
-		    exit(EXIT_FAILURE);
-		}
-                char* maybe_len = argv[++option_idx];
-		len = atoi(maybe_len);
-                if (len <= 0) {
-		    if (is_numeric_str(maybe_len) == 0) {
-		        printf("%s is not a valid value\n", maybe_len);
-		    } else {
-                        printf("%d is an invalid length\n", len);
-		    }
+				if (option_idx + 1 >= argc) {
+					printf("Missing integer argument for option -l\n");
+					exit(EXIT_FAILURE);
+				}
+        
+				char* maybe_len = argv[++option_idx];
+				len = atoi(maybe_len);
+				if (len <= 0) {
+					if (is_numeric_str(maybe_len) == 0) {
+						printf("%s is not a valid value\n", maybe_len);
+					} else {
+						printf("%d is an invalid length\n", len);
+					}
                     exit(EXIT_FAILURE);
                 }
                 len = CLAMP_MAX(len, ID_MAX_LEN);
-            break;
+				break;
             default:
                 fprintf(stderr, "Usage: %s [-l len]\n", argv[0]);
                 exit(EXIT_FAILURE);
